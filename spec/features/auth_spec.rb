@@ -37,12 +37,14 @@ feature "logging in" do
 end
 
 feature "logging out" do
-
+  before(:each) do
+    visit new_session_url
+  end
   scenario "begins with logged out state" do
-
+    expect(page).to have_content "Sign In"
   end
 
   scenario "doesn't show username on the homepage after logout" do
-
+    expect(page).to_not have_content "charles"
   end
 end
