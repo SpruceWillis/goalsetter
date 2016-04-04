@@ -7,8 +7,18 @@ class SessionsController < ApplicationController
       params[:user][:username],
       params[:user][:password]
     )
+
+    if @user
+      login_user(@user)
+      redirect_to goals_url
+    else
+      flash.now[:errors] = ["Invalid credentials"]
+      render :new
+    end
   end
 
   def destroy
+    logout
+    redirect_to new_session_url
   end
 end

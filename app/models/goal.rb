@@ -14,7 +14,7 @@
 
 class Goal < ActiveRecord::Base
   validates :title, :body, :user_id, presence: true
-  validates :public, :completed, inclusion: { in: ["true", "false"] }
+  validates :public, :completed, inclusion: { in: [true, false] }
 
-  belongs_to :user
+  belongs_to :user, inverse_of: :goals
 end

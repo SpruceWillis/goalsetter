@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
+  has_many :goals, inverse_of: :user
+
   def self.generate_session_token
     SecureRandom.urlsafe_base64
   end
@@ -26,6 +28,10 @@ class User < ActiveRecord::Base
     user = User.find_by(username: username)
     return nil unless user && user.is_password?(password)
     user
+  end
+
+  def visible_goals
+    Goal.where("public = 'true' OR user_id = #{self.id}")
   end
 
   def password=(password)

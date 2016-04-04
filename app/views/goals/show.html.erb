@@ -1,0 +1,15 @@
+<h2><%= @goal.title %></h2>
+
+<%= @goal.body %>
+<br>
+<label>Completed:
+  <%= @goal.completed %>
+</label>
+<br>
+<label>Public:
+  <%= @goal.public %>
+</label>
+<br>
+<br>
+<%= link_to "Edit Goal", edit_goal_url(@goal) %> |
+<%= link_to "Goals", goals_url %>
