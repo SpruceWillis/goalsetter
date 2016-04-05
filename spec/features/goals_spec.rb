@@ -38,7 +38,12 @@ feature "the goals process" do
       expect(page).to_not have_content("Body can't be blank")
     end
 
+  end
 
+  feature "displays correct goals on index" do
 
+    scenario "it has goals" do
+      expect(FactoryGirl.build(:goal)).to be_instance_of(Goal)
+    end
   end
 end
