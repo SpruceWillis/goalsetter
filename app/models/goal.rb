@@ -17,4 +17,5 @@ class Goal < ActiveRecord::Base
   validates :public, :completed, inclusion: { in: [true, false] }
 
   belongs_to :user, inverse_of: :goals
+  has_many :comments, as: :commentable
 end

@@ -13,3 +13,7 @@
 <br>
 <%= link_to "Edit Goal", edit_goal_url(@goal) %> |
 <%= link_to "Goals", goals_url %>
+
+<br>
+
+<%= render "shared/comment_form", comments: @goal.comments, action: goal_comments_url(@goal) %>
